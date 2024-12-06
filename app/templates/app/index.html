@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock title %}
+{% block content %}
+
+<article>
+    <section>
+        <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 2rem;">
+            <div>
+                <h1 style="margin: 4rem 0;"><mark>Se matricule em um novo curso</mark></h1>
+                <hgroup>
+                    <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, pariatur.</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, odit! Dignissimos, harum? A asperiores earum optio consequuntur sit.<p>
+                </hgroup>
+                <a href="{% url 'app:signup' %}"><button class="contrast" style="margin-top: 1rem;">Cadastre-se</button></a>
+            </div>
+            <img src="https://placehold.co/600x400" alt="" srcset="">
+        </div>
+    </section>
+    <hr>
+    <section>
+        <p>{% lorem 2 b random %}</p>
+        <hr>
+        <p>{% lorem 1 b random %}</p>
+    </section>
+</article>
+{% endblock content %}

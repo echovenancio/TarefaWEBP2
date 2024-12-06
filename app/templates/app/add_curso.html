@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Adicionar curso{% endblock title %}
+
+{% block content %}
+    <h1>Novo curso</h1>
+    <form method="post" enctype="multipart/form-data" action="{% url 'app:curso' %}">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Registrar curso"/>
+    </form>
+{% endblock content %}

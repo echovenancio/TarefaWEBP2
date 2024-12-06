@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Users{% endblock title %}
+{% block content %}
+    <section style="display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap;">
+    {% for user in dados %}
+    <article style="width: 20%; box-shadow: 1px 1px 10px #000000;">
+        <header>
+            <hgroup>
+            <img src="{{ user.foto.url }}" />
+            </hgroup>
+        </header>
+        <span>Nome: {{user.name}}</span> <br>
+        <span>Email: {{user.email}}</span>
+        <div>
+            <a href="{% url 'app:edit-user' user.id %}"><button class="secondary">Editar</button></a>
+            <a href="{% url 'app:delete-user' user.id %}"><button class="secondary" style="background-color: #ff5252;">Excluir</button></a>
+        </div>
+    </article>
+    {% endfor %}    
+    </section>
+{% endblock content %}

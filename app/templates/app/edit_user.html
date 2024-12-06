@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Edit{% endblock title %}
+{% block content %}
+    <h1>Edit usuário</h1>
+    <form action="{% url 'app:signup' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Editar"/>
+    </form>
+{% endblock content %}

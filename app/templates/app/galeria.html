@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Fotos{% endblock title %}
+{% block content %}
+    <section style="display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap;">
+    {% for foto in fotos %}
+    <article style="width: 20%; box-shadow: 1px 1px 10px #000000;">
+        <header>
+            <hgroup>
+            <img src="{{ foto.foto.url }}" />
+            </hgroup>
+        </header>
+        <span>{{foto.nome}}</span><br>
+    </article>
+    {% endfor %}    
+    </section>
+{% endblock content %}

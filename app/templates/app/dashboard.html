@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}dashboard{% endblock title %}
+
+{% block content %}
+    <section style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+            <hgroup>
+                <h1>{{ user.email }}</h1>
+                <p>{{ user.username }}</p>
+            </hgroup>
+            <div>
+                <a href="{% url 'app:change-password' user.id %}">
+                    <button class="secondary">Redefinir senha</button>
+                </a>
+                <a href="{% url 'app:delete-user' user.id %}">
+                    <button class="secondary" style="background-color: #ff5252;">Apagar conta</button>
+                </a>
+            </div>
+        </div>
+        <div>
+            <img style="max-width: 400px;" src="{{ user.foto.url }}"/>
+        </div>
+    </section>
+{% endblock content %}

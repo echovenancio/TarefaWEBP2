@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Contato{% endblock title %}
+
+{% block content %}
+    <section>
+        <h1>Entre em contato</h1>
+        <form>
+            <label>Seu email
+                <input name="email" type="email" />
+            <label>Escreva sua mensagem
+                <textarea>
+                </textarea>
+            </label>
+            <button>Enviar mensagem</button>
+        </form>
+        <div>
+            <h2>Outras formas de contato</h2>
+            <ul>
+                <li>Telefone: 9999999</li>
+            </ul>
+        </div>
+    </section>
+{% endblock content %}

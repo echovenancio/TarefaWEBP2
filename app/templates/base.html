@@ -1,0 +1,100 @@
+<!doctype html>
+
+<html data-theme="dark" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <title> {% block title %}{% endblock title %}</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    >
+    <script src="//unpkg.com/alpinejs" defer></script>
+  </head>
+  <body>
+    <header
+    style="position: sticky; top: 0;  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); padding: 0rem 0;  background-color: rgba(0, 0, 0, 0.5); backdrop-filter: blur(5px);">
+    <div class="container">
+        <nav>
+            <ul>
+                <a href="/"><li><h2><strong>Curso Online</strong></h2></li></a>
+            </ul>
+            <ul>
+                <li style="padding-right: 1rem;">
+                    <a href="{% url 'app:galeria' %}">
+                        <button>
+                            Galeria
+                        </button>
+                    </a>
+                </li>
+                <li style="padding-right: 1rem;">
+                    <a href="{% url 'app:form_login' %}">
+                        <button>
+                            Entrar
+                        </button>
+                    </a>
+                </li>
+                <li style="padding-right: 1rem;">
+                    <a href="{% url 'app:contato' %}">
+                        <button>
+                            Contato
+                        </button>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    </header>
+    <main class="container">
+        {% if messages %}
+            {% for message in messages%}
+                <div x-data="{ open: true }" x-show="open">
+                    {% if message.tags == 'success' %}
+                    <article style="display: flex; color: black; background-color: #a3e692; border-radius=15px; flex-direction: row; justify-content: space-between">
+                        {{message}}
+                        <p style="color: black; center; align-content: center; cursor: pointer;" @click="open = false">X</p>
+                    </article>
+                    {% else %}
+                    <article style="display: flex; background-color: #ff5252; border-radius=15px; flex-direction: row; justify-content: space-between">
+                        {{message}}
+                        <p style="text-align: center; align-content: center; cursor: pointer;" @click="open = false">X</p>
+                    </article>
+                    {% endif %}
+                </div>
+            {% endfor%}
+        {% endif %}
+        {% block content %}{% endblock content %}
+    </main>
+    <hr>
+    <footer class="container">
+        <hgroup>
+            <div class="grid">
+                <div>
+                    <p>Users</p><br>
+                    <a href="{% url 'app:signup' %}">Cadastrar usuário</a><br>
+                </div>
+                <div>
+                    <p>Cursos</p><br>
+                    <a href="{% url 'app:curso' %}">Cadastrar curso</a><br>
+                    <a href="{% url 'app:get-cursos' %}">Exibir cursos</a>
+                </div>
+                <div>
+                    <p>Fotos</p><br>
+                    <a href="{% url 'app:upload-foto' %}">Upload de foto</a><br>
+                    <a href="{% url 'app:galeria' %}">Galeria</a><br>
+                </div>
+                <div>
+                    <p>Suporte</p><br>
+                    <a href="{% url 'app:contato' %}">Contato</a><br>
+                </div>
+                <div>
+                    <p>Gerenciamento</p><br>
+                    <a href="{% url 'app:grafico-vendas' %}">Graficos</a><br>
+                </div>
+            <div>
+            <p>@2024</p>
+          </hgroup>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block title %}Graficos{% endblock title %}
+{% block content %}
+    <section style="display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap; margin: 0 auto; justify-content: center;">
+        <img src="data:image/png;base64,{{ image }}" alt="Grafico de vendas">
+    </section>
+{% endblock content %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block title %}Cursos{% endblock title %}
+
+{% block content %}
+<section style="display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap">
+    {% for curso in cursos %}
+    <article style="width: 28%; box-shadow: 1px 1px 10px #000000">
+        <header>
+            <hgroup>
+                <img src="{{ curso.foto.url }}" />
+                <h3>{{curso.name}}.</h3>
+                <p>Autor: {{curso.author}}.</p>
+            </hgroup>
+        </header>
+        <span>Duração: {{curso.duration}} horas.</span><br />
+        <h4>Preço: ${{curso.price}}.</h4>
+        {% if is_logged_in == True and curso.estoque >= 1 %}
+        <form method="POST" action="{% url 'app:comprar-curso' curso.id %}">
+            {% csrf_token %}
+            <button style="width: 100%">Comprar</button>
+        </form>
+        {% elif is_logged_in == True %}
+            <button disabled>Estoque do curso esgotado.</button>
+        {% else %}
+        <button disabled>Entre para conseguir comprar o curso.</button>
+        {% endif %}
+    </article>
+    {% endfor %}
+</section>
+{% endblock content %}
